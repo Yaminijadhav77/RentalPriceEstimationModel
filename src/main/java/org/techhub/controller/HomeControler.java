@@ -1,11 +1,17 @@
 package org.techhub.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.techhhub.model.RegisterModel;
+import org.techhhub.model.StateModel;
 import org.techhub.services.serviceRegister;
 
 @Controller
@@ -62,5 +68,37 @@ public class HomeControler {
         }else{
             return "Register";
         }
+    }
+    
+    @GetMapping("/adminDashboard")
+    public String showAdminDashboard() {
+    	return "AdminDashboard";
+    }
+    @GetMapping("/addstates")
+    public String openStatepage() {
+    	return "state";
+    }
+    
+    @PostMapping("/states")
+	public String addState(@RequestParam("name") String name,
+	                       @RequestParam("code") String code) {
+
+	    StateModel state = new StateModel();
+
+	    state.setState_id(UUID.randomUUID());
+	    state.setName(name);
+	    state.setStateCode(code);
+
+	    service.isAddState(state);
+
+	    return "state";
+	}
+    
+    @GetMapping("/viewStates")
+    public String viewStates(Model model) {
+    	List<StateModel> states=service.getAllStates();
+    	model.addAttribute("states",states);
+		return "stateView";
+    	
     }
 }

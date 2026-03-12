@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.techhhub.model.RegisterModel;
+import org.techhhub.model.StateModel;
 import org.techhub.repsitory.RegisterRepo;
 
 @Service
@@ -40,4 +41,14 @@ public class serviceRegisterImp implements serviceRegister {
 
         return false;
     }
+	@Override
+	public boolean isAddState(StateModel state) {
+		return repository. isAddState(state);
+	
+	}
+
+	@Override
+	public List<StateModel> getAllStates() {
+		return repository.getAllStates();
+	}
 }
