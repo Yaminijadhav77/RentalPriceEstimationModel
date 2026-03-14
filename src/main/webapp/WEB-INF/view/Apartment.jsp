@@ -55,46 +55,46 @@ width:150px;
 
 /* Button */
 
-button{
+.search-btn{
 padding:12px 25px;
 border:none;
-background:#007bff;
+background:#ff5a3c;
 color:white;
 border-radius:5px;
 font-size:16px;
 cursor:pointer;
+text-decoration:none;
+display:inline-block;
 }
 
-button:hover{
-background:#0056b3;
+.search-btn:hover{
+background:#e04a2f;
 }
-
 </style>
 
 </head>
 
 <body>
-
 <div class="container">
 
 <h2>Select Apartment</h2>
 
 <div class="dropdown-row">
 
-<select>
-<option>Select State</option>
-<option>Maharashtra</option>
-<option>Gujarat</option>
-<option>Telangana</option>
-<option>Karnataka</option>
+<form action="searchApartment" method="post">
+
+<select name="stateId">
+<option value="">Select State</option>
+<c:forEach var="s" items="${states}">
+<option value="${s.stateId}">${s.stateName}</option>
+</c:forEach>
 </select>
 
-<select>
-<option>Select City</option>
-<option>Pune</option>
-<option>Mumbai</option>
-<option>Nagpur</option>
-<option>Nashik</option>
+<select name="cityId">
+<option value="">Select City</option>
+<c:forEach var="c" items="${cityList}">
+<option value="${c.cityId}">${c.cityName}</option>
+</c:forEach>
 </select>
 
 <select>
@@ -113,11 +113,11 @@ background:#0056b3;
 <option>4 BHK</option>
 </select>
 
-<button>Search</button>
+<a href="login" class="search-btn">Search</a>
 
 </div>
 
 </div>
-
+</form>
 </body>
 </html>

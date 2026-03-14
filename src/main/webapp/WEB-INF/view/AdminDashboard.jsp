@@ -2,139 +2,264 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home page</title>
+<title>Admin Dashboard</title>
 
-<link rel="stylesheet" href="<c:url value='/resources/style.css'/>">
-<script type='text/javascript' src="<c:url value='/resources/JS/ajax.js'/>">
-</script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-	<style>
-	body{
-margin:0;
-background:#e9ecef;
-font-family:Arial;
+
+<style>
+body {
+	margin: 0;
+	background: #e9ecef;
+	font-family: Arial;
 }
 
-/* Sidebar */
-
-.sidebar{
-width:220px;
-height:100vh;
-background:#2f3e4d;
-position:fixed;
-padding-top:20px;
+/* Navbar */
+.navbar {
+	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* NEW CSS */
-
-.course-btn{
-width:200px;
-text-align:centert;
+/* Sidebar width */
+.offcanvas-start {
+	width: 230px !important;
 }
-	
-	</style>
+
+/* Sidebar body */
+.offcanvas-body {
+	background: #2f3e4d;
+	color: white;
+}
+
+/* Sidebar title */
+.offcanvas-title {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+/* Sidebar buttons */
+.course-btn {
+	width: 180px;
+	text-align: left;
+	background: #4b5d6b;
+	border: none;
+	font-weight: 500;
+	transition: 0.3s;
+}
+
+/* Hover effect */
+.course-btn:hover {
+	background: rgb(192, 192, 192)15, 13) 88, 73);
+	transform: translateX(5px);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+	border-radius: 8px;
+	box-shadow: 0px 5px 15px rgb(192, 192, 192);
+}
+
+/* Dropdown item */
+.dropdown-item {
+	font-weight: 500;
+	transition: 0.3s;
+}
+
+/* Hover */
+.dropdown-item:hover {
+	background: #1abc9c;
+	color: white;
+}
+</style>
+
 </head>
+
 <body>
 
-<div class="dark-conatiner">
-	<nav class="navbar navbar-dark bg-dark m-0">
-		<div style="width: 100%">
-			<div class="container-fluid d-flex align-items-center">
+	<!-- Navbar -->
 
-				<button
-					class="btn btn-primary w-100 d-flex justify-content-between align-items-center "
-					type="button" data-bs-toggle="offcanvas"
-					data-bs-target="#offcanvasExample">
+	<nav class="navbar navbar-dark bg-dark">
 
-					<!-- LEFT icon -->
-					<span class="navbar-toggler-icon"></span>
+		<div class="container-fluid">
 
-					<!-- RIGHT text -->
-					<span class="ms-auto text-end text-white me-2"> Admin Dashboard</span>
+			<button
+				class="btn btn-primary w-100 d-flex justify-content-between align-items-center"
+				type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#offcanvasExample">
 
-				</button>
+				<span class="navbar-toggler-icon"></span> <span
+					class="ms-auto text-end text-white me-2"> Admin Dashboard </span>
 
-			</div>
+			</button>
 
 		</div>
+
 	</nav>
+
+
+	<!-- Sidebar -->
+
 	<div class="offcanvas offcanvas-start" tabindex="-1"
-		id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		id="offcanvasExample">
+
 		<div class="offcanvas-header">
 
-			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin
-				Master</h5>
+			<h5 class="offcanvas-title">Admin Master</h5>
+
 			<button type="button" class="btn-close text-reset"
 				data-bs-dismiss="offcanvas"></button>
+
 		</div>
-		<div class="offcanvas-body bg-dark text-white">
+
+
+		<div class="offcanvas-body">
+
+
+			<!-- User -->
 
 			<div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">User</button>
+
+				<button class="btn btn-primary dropdown-toggle course-btn"
+					type="button" data-bs-toggle="dropdown">User</button>
+
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item .text-hover" href='newcourse'>New Course</a></li>
-					<li><a class="dropdown-item .text-hover" href="viewc">View Course</a></li>
+
+					<li><a class="dropdown-item" href="newcourse"> New Course
+					</a></li>
+
+					<li><a class="dropdown-item" href="viewc"> View Course </a></li>
+
 				</ul>
+
 			</div>
+
+
+			<!-- State -->
+
 			<div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">State</button>
+
+				<button class="btn btn-primary dropdown-toggle course-btn"
+					type="button" data-bs-toggle="dropdown">State</button>
+
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item .text-hover " href='addstates'>New Subject</a></li>
-					<!-- <li><a class="dropdown-item text-hover" href='viewStates'>View Subject</a></li> -->
-					<li><a class="dropdown-item text-hover" href="<c:url value='/viewStates'/>">View States</a></li>
+
+					<li><a class="dropdown-item" href="addstates"> Add State </a>
+					</li>
+
+					<li><a class="dropdown-item" href="viewStates"> View State
+					</a></li>
+
 				</ul>
+
 			</div>
+
+
+			<!-- City -->
+
 			<div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">City</button>
+
+				<button class="btn btn-primary dropdown-toggle course-btn"
+					type="button" data-bs-toggle="dropdown">City</button>
+
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item .text-hover " href='addsubject'>New Subject</a></li>
-					<li><a class="dropdown-item .text-hover" href='viewsubject'>View Subject</a></li>
+
+					<li><a class="dropdown-item" href="addcity"> Add City </a></li>
+
+					<li><a class="dropdown-item" href="viewCities"> View City </a></li>
+
 				</ul>
+
 			</div>
+
+
+			<!-- Location -->
+
 			<div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">Location</button>
+
+				<button class="btn btn-primary dropdown-toggle course-btn"
+					type="button" data-bs-toggle="dropdown">Location</button>
+
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item .text-hover " href='addsubject'>New Subject</a></li>
-					<li><a class="dropdown-item .text-hover" href='viewsubject'>View Subject</a></li>
+
+					<li><a class="dropdown-item" href="addLocation"> Add
+							Location </a></li>
+
+					<li><a class="dropdown-item" href="viewLocation"> View
+							Location </a></li>
+
 				</ul>
+
 			</div>
+
+
+			<!-- Properties -->
+
 			<div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">Properties</button>
+
+				<button class="btn btn-primary dropdown-toggle course-btn"
+					type="button" data-bs-toggle="dropdown">Properties</button>
+
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item .text-hover " href='addsubject'>New Subject</a></li>
-					<li><a class="dropdown-item .text-hover" href='viewsubject'>View Subject</a></li>
+
+					<li><a class="dropdown-item" href="addProperty"> Add
+							Property </a></li>
+
+					<li><a class="dropdown-item" href="viewProperty"> View
+							Property </a></li>
+
 				</ul>
-			</div><div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">Amenities</button>
-				<ul class="dropdown-menu">
-					<li><a class="dropdown-item .text-hover " href='addsubject'>New Subject</a></li>
-					<li><a class="dropdown-item .text-hover" href='viewsubject'>View Subject</a></li>
-				</ul>
-			</div><div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">Report</button>
-				
-			</div><div class="dropdown mt-3">
-				<button class="btn btn-primary dropdown-toggle course-btn" type="button"
-					data-bs-toggle="dropdown">Logout</button>
-				
+
 			</div>
+
+
+			<!-- Amenities -->
+
+			<div class="dropdown mt-3">
+
+				<button class="btn btn-primary dropdown-toggle course-btn"
+					type="button" data-bs-toggle="dropdown">Amenities</button>
+
+				<ul class="dropdown-menu">
+
+					<li><a class="dropdown-item" href="addAmenities"> Add
+							Amenities </a></li>
+
+					<li><a class="dropdown-item" href="viewAmenities"> View
+							Amenities </a></li>
+
+				</ul>
+
+			</div>
+
+
+			<!-- Report -->
+
+			<div class="dropdown mt-3">
+
+				<button class="btn btn-primary course-btn">Report</button>
+
+			</div>
+
+
+			<!-- Logout -->
+
+			<div class="dropdown mt-3">
+
+				<button class="btn btn-danger course-btn">Logout</button>
+
+			</div>
+
 		</div>
+
 	</div>
-	</div>
+
 </body>
 </html>
